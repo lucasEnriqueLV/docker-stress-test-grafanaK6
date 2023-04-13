@@ -1,0 +1,18 @@
+pipeline {
+	agent { 
+		docker { image 'grafana/k6:latest' }
+	}
+	options { ansiColor('xterm') }
+	stages {
+		stage("check k6") {
+			steps {
+				sh "k6 version"
+			}
+		}
+		stage("run k6 test") {
+			steps {
+				sh "k6 run --vus 10 --duration 30s stress-test.js"
+			}
+		}
+	}
+}
