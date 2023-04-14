@@ -7,7 +7,7 @@ networks:
 services:
   k6:
     container_name: k6
-    image: grafana/k6:latest
+    image: loadimpact/k6:latest
     networks:
       - k6
     ports:
@@ -15,4 +15,4 @@ services:
     environment:
       - K6_OUT=influxdb=http://influxdb:8086/k6
     volumes:
-      - ./examples:/scripts
+      - ./tests:/scripts
