@@ -2,7 +2,7 @@ pipeline {
 	agent { 
 		docker { 
 			image 'grafana/k6:latest'
-			args "--entrypoint=''"
+			args "--entrypoint='' --net='docker-jenkins_k6'"
 		}
 	}
 	options { ansiColor('xterm') }
