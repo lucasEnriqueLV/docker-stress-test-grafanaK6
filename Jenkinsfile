@@ -14,7 +14,7 @@ pipeline {
 		}
 		stage("run k6 test") {
 			steps {
-				sh 'k6 run --vus 10 --duration 30s --out influxdb=http://influxdb:8086/k6 stress-test.js'
+				sh 'k6 run --vus 10 --duration 30s --out influxdb=http://influxdb:8086/k6 -e MY_HOSTNAME=${apilink} stress-test.js'
 			}
 		}
 	}
